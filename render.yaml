@@ -1,0 +1,27 @@
+services:
+  # 1. FastAPI Docker Service
+  - type: web
+    name: fastapi-car-price-api
+    env: docker
+    plan: free
+    branch: main
+    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: MODEL_PATH
+        value: app/models/model.joblib
+      - key: API_KEY
+        value: demo-key
+      - key: JWT_SECRET
+        generateValue: true
+      - key: REDIS_URL
+        fromService:
+          name: redis-cache
+          type: redis
+          property: connectionString
+
+  # 2. Redis Managed Service
+  - type: redis
+    name: redis-cache
+    plan: free
+    ipAllowList: [] # Internal access only

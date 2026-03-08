@@ -9,6 +9,7 @@ class Settings:
     JWT_SECRET_KEY=os.getenv('JWT_SECRET_KEY')
     JWT_ALGORITHM='HS256'
     REDIS_URL=os.getenv('REDIS_URL')
-    MODEL_PATH='app/models/model.pkl'
-
+    MODEL_PATH='app/models/model.joblib'
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+    
 settings=Settings()
