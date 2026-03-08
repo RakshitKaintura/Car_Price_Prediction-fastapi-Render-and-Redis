@@ -12,7 +12,7 @@ services:
         value: app/models/model.joblib
       - key: API_KEY
         value: demo-key
-      - key: JWT_SECRET
+      - key: JWT_SECRET_KEY
         generateValue: true
       - key: REDIS_URL
         fromService:
